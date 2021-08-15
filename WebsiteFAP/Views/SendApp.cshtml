@@ -1,0 +1,49 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "/Pages/Shared/_Layout2.cshtml";
+}
+@using WebsiteFAP.Models
+@model Applications;
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>FAP - Send applications</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <h1>Send an application</h1>
+    @using (Html.BeginForm("SendApp", "Default", FormMethod.Post))
+    {
+        <table class="table table-bordered">
+            <tr>
+                <td>Application type: </td>
+                <td>
+
+                    @*@Html.DropDownList("typeid", null, "Choose Application Type")*@
+                    @Html.DropDownListFor(m => m.TypeId, @ViewBag.typeid as SelectList, "Choose Application Type")
+                </td>
+            </tr>
+            <tr>
+                <td>Purpose: </td>
+                
+                <td><textarea name="Purpose" class="form-control" rows="7" cols="15" id="Purpose" style="width:786px;"></textarea></td>
+            </tr>
+            <tr>
+                <td>Link Attach: (Upload your file on Google drive and enter link) </td>
+                <td>
+                    <input type="url" name="FileUploaded" id="FileUploaded" placeholder="Enter link here...." size="80" />
+                    <br />
+                    @*Extension File: "xlsx", "pdf", "docx", "doc", "xls", "jpg", "png","zip"
+                    =&gt; *@
+                        Template <a href="https://fap.fpt.edu.vn/temp/pdf/AppTemplate.zip">Click here</a><br />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" name="ctl00$mainContent$btSubmit" value="Send" id="ctl00_mainContent_btSubmit" class="btn btn-success"></td>
+            </tr>
+        </table>
+    }
+    </body>
+</html>

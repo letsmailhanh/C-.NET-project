@@ -1,0 +1,22 @@
+﻿
+@*@{
+    Layout = null;
+}
+@model WebsiteFAP.Models.AppFile
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create File</title>
+</head>
+<body>
+
+    <form asp-action="CreateFile" asp-controller="Default" method="post" enctype="multipart/form-data">
+
+        <input type="file" name="file" asp-for="MyFile" />
+
+        <input type="submit" />
+    </form>
+</body>
+</html>*@

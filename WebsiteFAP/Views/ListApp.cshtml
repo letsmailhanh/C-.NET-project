@@ -1,0 +1,57 @@
+﻿
+@using WebsiteFAP.Models
+@model List<Applications>
+@{
+    Layout = "/Pages/Shared/_Layout2.cshtml";
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View Applications</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <h2>My applications</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>PURPOSE</th>
+                <th>CREATE DATE</th>
+                <th>PROCESS NOTE</th>
+                <th>FILE</th>
+                <th>STATUS</th>
+                <th>CHANGE STATUS TIME</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Purpose</td>
+                    <td>@item.CreateDate</td>
+                    <td>@item.ProcessNote</td>
+                    <td><a href=@item.FileUploaded>Open</a></td>
+                    @{ var x = item.StatusId;}
+                    @if (x == 1)
+                    {
+                        <td style="color:forestgreen">Accepted</td>
+                    }
+                    else if (x == 2)
+                    {
+                        <td style="color: red">Denied</td>
+                    }
+                    else
+                    {
+                        <td style="color:blue">Processing</td>
+                    }
+
+                    <td>@item.ChangeStatusTime</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

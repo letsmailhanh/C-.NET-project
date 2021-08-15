@@ -1,0 +1,24 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <form enctype="multipart/form-data" action="/Default/Home" method="post">
+        <dl>
+            <dt>
+                <label asp-for="FileUpload.FormFile"></label>
+            </dt>
+            <dd>
+                <input asp-for="FileUpload.FormFile" type="file" multiple>
+                <span asp-validation-for="FileUpload.FormFile"></span>
+            </dd>
+        </dl>
+        <input asp-page-handler="Upload" class="btn" type="submit" value="Upload" />
+    </form>
+</body>
+</html>
